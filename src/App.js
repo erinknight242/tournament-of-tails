@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Round from './Round.js';
-import { config } from '../config.js';
-require('../assets/css/style.scss');
+import Layout from './Layout';
+import config from '../config.js';
+// require('../assets/css/style.scss');
 
 injectTapEventPlugin();
 
@@ -12,13 +13,26 @@ export default class App extends Component {
     super(props, context);
 
     // Initialize Firebase
-    firebase.initializeApp(config);
-
+    !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
+    
+    const db = firebase.firestore();
     this.state = {
+      db,
+      data: []
     };
   }
 
+  componentDidMount() {
+    const data = [];
+    this.state.db.collection("pets").get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+              data[doc.id] = (doc.data());
+          });
+      this.setState({ data });
+    });
+  }
+
   render() {
-    return <Round/>;
+    return <Layout data={this.state.data}/>;
   }
 }

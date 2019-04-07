@@ -6,7 +6,7 @@ const BracketGame = ({ pet1, pet2 }) => {
     <div className="game-container">
       <div className="bracket-group">
         <div className="pets">
-          <Pet pet={pet1} color="green"/>
+          <Pet pet={pet1} color="grey"/>
           <Pet pet={pet2} color="grey"/>
         </div>
         <div className="bracket-lines">

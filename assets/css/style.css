@@ -80,3 +80,32 @@ html, body {
     border-bottom: 0;
     margin-top: -5px;
 }
+
+.layout {
+    display: flex;
+}
+
+.next-round {
+    position: fixed;
+    left: 400px;
+    cursor: pointer;
+    display: flex;
+    padding: 24px;
+    opacity: 0.6;
+}
+
+.next-round:hover {
+    opacity: 0.8;
+}
+
+.next-round img {
+    width: 25px;
+    height: 40px;
+    opacity: 0.3;
+    margin-left: 24px;
+    padding-top: 12px;
+}
+
+.next-round:hover img {
+    opacity: 0.6;
+}
