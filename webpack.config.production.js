@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -35,6 +36,7 @@ module.exports = {
   },
 
   plugins: [
+    new CopyWebpackPlugin([{ from: 'assets/favicon.png' }]),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       comments: false
