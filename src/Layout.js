@@ -33,6 +33,7 @@ const Layout = ({ data, currentRound, games, setCurrentRound }) => {
     <div className="layout">
       {selectedRound}
       <div className="nav">
+        <div className={`placeholder ${previousHidden}`}></div>
         <div className={`previous round-text ${previousHidden}`} onClick={setCurrentRound.bind(this, prevRound)}>
           <img src={`../assets/images/next.png`}/>
           <h3>Previous Round</h3>

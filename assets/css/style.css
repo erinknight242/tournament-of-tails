@@ -135,3 +135,9 @@ html, body {
 .hidden {
     display: none;
 }
+
+.placeholder.hidden {
+    width: 258px;
+    height: 1px;
+    display: initial;
+}
