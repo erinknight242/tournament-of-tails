@@ -20,7 +20,10 @@ html, body {
 .game-container .pet {
     background: #fff;
     margin-bottom: 5px;
-    width: 160px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 180px;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .game-container .pet.green {
@@ -48,6 +51,7 @@ html, body {
     align-items: center;
     font-size: 0.9rem;
     padding: 0 5px 5px;
+    flex: 1;
 }
 
 .game-container .bracket-lines {
@@ -67,6 +71,14 @@ html, body {
 .game-container .bracket-lines .middle {
     border: 0;
     border-right: 3px solid #bbb;
+    display: flex;
+    align-items: center;
+}
+.game-container .bracket-lines .middle span {
+    text-align: center;
+    font-size: 0.8rem;
+    width: 100%;
+    margin-top: -5px;
 }
 .game-container .bracket-lines .bottom {
     margin-bottom: 80px;
@@ -85,27 +97,41 @@ html, body {
     display: flex;
 }
 
-.next-round {
-    position: fixed;
-    left: 400px;
+.round-text {
     cursor: pointer;
     display: flex;
     padding: 24px;
     opacity: 0.6;
 }
 
-.next-round:hover {
+.round-text:hover {
     opacity: 0.8;
 }
 
-.next-round img {
+.round-text img {
     width: 25px;
     height: 40px;
     opacity: 0.3;
     margin-left: 24px;
+    margin-right: 24px;
     padding-top: 12px;
+    padding-bottom: 12px;
 }
 
-.next-round:hover img {
+.round-text:hover img {
     opacity: 0.6;
+}
+
+.previous img {
+    transform: rotate(180deg);
+}
+.nav {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
 }

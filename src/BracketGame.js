@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Pet from './Pet.js'
 
-const BracketGame = ({ pet1, pet2 }) => {
+const BracketGame = ({ pet1, pet2, game }) => {
+  const name = game && game.name ? game.name : '';
   return (
     <div className="game-container">
       <div className="bracket-group">
@@ -11,7 +12,9 @@ const BracketGame = ({ pet1, pet2 }) => {
         </div>
         <div className="bracket-lines">
           <div className="top"></div>
-          <div className="middle"></div>
+          <div className="middle">
+            <span>{name}</span>
+          </div>
           <div className="bottom"></div>
         </div>
         <div className="bracket-lines">

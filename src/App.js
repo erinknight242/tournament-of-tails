@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Layout from './Layout';
@@ -18,21 +18,49 @@ export default class App extends Component {
     const db = firebase.firestore();
     this.state = {
       db,
-      data: []
+      data: [],
+      games: [],
+      currentRound: 0
     };
   }
 
   componentDidMount() {
     const data = [];
+    const games = [];
+    let currentRound = "";
     this.state.db.collection("pets").get().then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-              data[doc.id] = (doc.data());
-          });
+      querySnapshot.forEach((doc) => {
+        data[doc.id] = (doc.data());
+      });
       this.setState({ data });
+    });
+    this.state.db.collection("games").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        games[doc.id] = (doc.data());
+      });
+      this.setState({ games });
+    });
+    this.state.db.collection("currentRound").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        currentRound = doc.data().round;
+      });
+      this.setState({ currentRound });
     });
   }
 
+  setCurrentRound = (currentRound) => {
+    this.setState({ currentRound });
+  }
+
   render() {
-    return <Layout data={this.state.data}/>;
+    const { data, games, currentRound } = this.state;
+    return (
+      <Layout
+        data={data}
+        games={games}
+        currentRound={currentRound}
+        setCurrentRound={this.setCurrentRound}
+      />
+    );
   }
 }
