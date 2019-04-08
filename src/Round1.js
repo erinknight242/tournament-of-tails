@@ -23,7 +23,7 @@ const Round = ({ data, games }) => {
       <BracketGame pet1={pet(19)} pet2={pet(12)} game={games[14]} />
       <BracketGame pet1={pet(11)} pet2={pet(20)} game={games[15]} />
       <BracketGame pet1={winnerFromGame(3)} pet2={pet(4)} game={games[16]} />
-      <BracketGame pet1={pet(2)} pet2={winnerFromGame(4)} game={games[17]} />
+      <BracketGame pet1={pet(1)} pet2={winnerFromGame(4)} game={games[17]} />
       <BracketGame pet1={pet(17)} pet2={pet(14)} game={games[18]} />
       <BracketGame pet1={pet(9)} pet2={winnerFromGame(7)} game={games[19]} />
       <BracketGame pet1={winnerFromGame(8)} pet2={pet(6)} game={games[20]} />

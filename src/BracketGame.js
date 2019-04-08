@@ -3,12 +3,16 @@ import Pet from './Pet.js'
 
 const BracketGame = ({ pet1, pet2, game }) => {
   const name = game && game.name ? game.name : '';
+  const color = (petSeed) => {
+    const petId = (parseInt(petSeed) - 1).toString();
+    return game && game.winner && game.winner === petId ? "green" : "grey";
+  }
   return (
     <div className="game-container">
       <div className="bracket-group">
         <div className="pets">
-          <Pet pet={pet1} color="grey"/>
-          <Pet pet={pet2} color="grey"/>
+          <Pet pet={pet1} color={color(pet1.seed)}/>
+          <Pet pet={pet2} color={color(pet2.seed)}/>
         </div>
         <div className="bracket-lines">
           <div className="top"></div>
