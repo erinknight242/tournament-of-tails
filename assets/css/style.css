@@ -5,10 +5,13 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     color: #342E37;
     background: #D4F1F7;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .round {
     padding: 24px;
+    pointer-events: none;
 }
 
 .game-container {
@@ -126,10 +129,17 @@ html, body {
     transform: rotate(180deg);
 }
 .nav {
+    position: fixed;
+    left: 400px;
     display: flex;
     align-items: center;
     height: 100px;
     width: 100%;
+}
+@media screen and (max-width: 400px) {
+    .nav {
+        display: none;
+    }
 }
 
 .hidden {
