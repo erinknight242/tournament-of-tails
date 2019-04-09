@@ -55,9 +55,9 @@ export default class Layout extends Component {
         const absX = Math.abs(this.state.swipeDiff);
         if (this.state.swiping && absX > this.minDistance ) {
           if (this.state.swipeDiff > 0) {
-              setCurrentRound(nextRound);
-          } else {
               setCurrentRound(prevRound);
+          } else {
+              setCurrentRound(nextRound);
           }
           this.setState({ swiped: true, swipe: {}, swipeDiff: 0 });
         }
