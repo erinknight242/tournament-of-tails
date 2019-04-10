@@ -12,7 +12,8 @@ export default class Layout extends Component {
     this.state = {
       x: 0,
       swiping: false,
-      swipeDiff: 0
+      swipeDiff: 0,
+      zooming: false
     }
     this.minDistance = 50;
   }
@@ -53,7 +54,7 @@ export default class Layout extends Component {
     }
     const handleTouchEnd = () => {
         const absX = Math.abs(this.state.swipeDiff);
-        if (this.state.swiping && absX > this.minDistance ) {
+        if (this.state.swiping && !this.state.zooming && absX > this.minDistance ) {
           if (this.state.swipeDiff > 0) {
               setCurrentRound(prevRound);
           } else {
