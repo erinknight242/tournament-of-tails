@@ -7,7 +7,7 @@ const Round = ({ data, games }) => {
   const winnerFromGame = (gameId) => {
     const winningId = games[gameId].winner;
     if (winningId === '') {
-      return unknownPet(gameId);
+      return unknownPet(games[gameId]);
     }
     return pet(winningId);
   };

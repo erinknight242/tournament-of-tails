@@ -4,8 +4,8 @@ export const petData = (data, id) => ({
     image: data[id].image
 });
 
-export const unknownPet = (gameId) => ({
-    name: `Winner from Game ${gameId}`,
+export const unknownPet = (game) => ({
+    name: `Winner from ${game.name}`,
     seed: '',
     image: ''
 });
