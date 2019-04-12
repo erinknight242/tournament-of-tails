@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import Pet from './Pet.js'
 
-const BracketGame = ({ pet1, pet2, game }) => {
+const BracketGame = ({ pet1, pet2, game, top }) => {
   const name = game && game.name ? game.name : '';
   const color = (petSeed) => {
     const petId = (parseInt(petSeed) - 1).toString();
     return game && game.winner && game.winner === petId ? "green" : "grey";
   }
+
+  const style = top ? { top } : {};
+
   return (
     <div className="game-container">
-      <div className="bracket-group">
+      <div className="bracket-group" style={style}>
         <div className="pets">
           <Pet pet={pet1} color={color(pet1.seed)}/>
           <Pet pet={pet2} color={color(pet2.seed)}/>
