@@ -5,6 +5,7 @@ import Round2 from './Round2';
 import Round3 from './Round3';
 import Round4 from './Round4';
 import Round5 from './Round5';
+import FullBracket from './FullBracket';
 
 export default class Layout extends Component {
   constructor(props, context) {
@@ -64,28 +65,40 @@ export default class Layout extends Component {
         }
     }
 
+    const mobileView = (
+    <div className="layout">
+    <div
+        className="swipe-container"
+        onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
+        onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
+        onTouchEnd={() => handleTouchEnd()}
+    >
+        {selectedRound}
+    </div>
+    <div className="nav">
+        <div className={`placeholder ${previousHidden}`}></div>
+        <div className={`previous round-text ${previousHidden}`} onClick={setCurrentRound.bind(this, prevRound)}>
+        <img src="../assets/images/next.png"/>
+        <h3>Previous Round</h3>
+        </div>
+        <div className={`next round-text ${nextHidden}`} onClick={setCurrentRound.bind(this, nextRound)}>
+        <h3>Next Round</h3>
+        <img src="../assets/images/next.png"/>
+        </div>
+    </div>
+    </div>
+    );
+
+    const desktopView = (
+      <FullBracket data={data} games={games} />
+    );
+
+    const displayView = window.innerWidth > 400 ? desktopView : mobileView;
+
     return(
-        <div className="layout">
-        <div
-            className="swipe-container"
-            onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
-            onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
-            onTouchEnd={() => handleTouchEnd()}
-        >
-            {selectedRound}
-        </div>
-        <div className="nav">
-            <div className={`placeholder ${previousHidden}`}></div>
-            <div className={`previous round-text ${previousHidden}`} onClick={setCurrentRound.bind(this, prevRound)}>
-            <img src={`../assets/images/next.png`}/>
-            <h3>Previous Round</h3>
-            </div>
-            <div className={`next round-text ${nextHidden}`} onClick={setCurrentRound.bind(this, nextRound)}>
-            <h3>Next Round</h3>
-            <img src={`../assets/images/next.png`}/>
-            </div>
-        </div>
-        </div>
+      <div>
+        {displayView}
+      </div>
     );
     }
 }

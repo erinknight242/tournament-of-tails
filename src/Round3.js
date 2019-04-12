@@ -12,7 +12,7 @@ const Round = ({ data, games }) => {
     return pet(winningId);
   };
 
-  return data.length ? (
+  return data.length && games.length ? (
     <div className="round">
       <h3>Elite 8</h3>
       <BracketGame pet1={winnerFromGame(25)} pet2={winnerFromGame(26)} game={games[33]} />

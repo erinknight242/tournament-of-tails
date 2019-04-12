@@ -6,7 +6,12 @@ html, body {
     color: #342E37;
     background: #D4F1F7;
     max-width: 100%;
-    overflow-x: hidden;
+}
+
+@media screen and (max-width: 400px) {
+    html, body {
+        overflow-x: hidden;
+    }
 }
 
 .round {
@@ -23,7 +28,7 @@ html, body {
 .game-container .pet {
     background: #fff;
     margin-bottom: 5px;
-    min-height: 100px;
+    height: 194.2px;
     display: flex;
     flex-direction: column;
     width: 180px;
@@ -89,11 +94,13 @@ html, body {
 }
 .game-container .bracket-lines .upper {
     border: 0;
+    width: 30px;
 }
-.game-container .bracket-lines .lower {
+.game-container .bracket-lines div.lower {
     border-right: 0;
     border-bottom: 0;
     margin-top: -5px;
+    width: 30px;
 }
 
 .layout {
@@ -150,4 +157,28 @@ html, body {
     width: 258px;
     height: 1px;
     display: initial;
+}
+
+.full-bracket-container {
+    display: flex;
+}
+
+.full-bracket-container .bracket-group {
+    position: relative;
+}
+.round-of-32.left {
+    left: 383px;
+    position: absolute;
+}
+.sweet-16 .pets .pet:first-child {
+    margin-bottom: 197px;
+}
+.elite-8 .pets .pet:first-child {
+    margin-bottom: 616px;
+}
+.final-4 .pets .pet:first-child {
+    margin-bottom: 1460px;
+}
+.championship .pets .pet:first-child {
+    margin-bottom: 3150px;
 }
